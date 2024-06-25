@@ -21,8 +21,8 @@
         <param name="odom_frame" type="string" value="$(arg odom_frame)"/>
     </node>
 
-    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_world_to_map" args="0.0 0.0 0.0 0.0 0.0 0.0 1.0 /world /map"/> -->
-    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_map_to_init" args="0.0 0.0 0.0 0.0 0.0 0.0 1.0 /map /camera_init"/> -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_world_to_map" args="0.0 0.0 0.0 0.0 0.0 0.0 1.0 /world /map"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_map_to_init" args="0.0 0.0 0.0 0.0 0.0 0.0 1.0 /map /odom"/>
     <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_body_to_base_link" args="0.0 0.0 0.0 0.0 0.0 0.0 1.0 /pano /base_link"/>
     <node pkg="tf2_ros" type="static_transform_publisher" name="static_tf_base_link_to_ouster" args="0.15 0.0 0.158 0.0, 0.0, 0.0, 1.0 /base_link /os_sensor"/>
     

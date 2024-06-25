@@ -182,6 +182,15 @@ void OdomNode::Publish(const std_msgs::Header& header) {
   SE3dToMsg(traj_.TfOdomLidar(), pose.pose);
   pub_pose.publish(pose);
 
+  // publish transform from odom to os_sensor
+  TransformStamped tf_o_b;
+  tf_o_b.header.frame_id = odom_frame_;
+  tf_o_b.header.stamp = header.stamp;
+  tf_o_b.child_frame_id = "os_sensor";
+  SE3dToMsg(traj_.TfOdomLidar(), tf_o_b.transform);
+  tf_broadcaster.sendTransform(tf_o_b);
+
+
   if (pub_pose_cov.getNumSubscribers() > 0) {
     PoseWithCovarianceStamped pose_cov;
     pose_cov.header = pose.header;
